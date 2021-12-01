@@ -6,7 +6,7 @@ const sendWelcomeEmail = (email, name) => {
         from: 'Selwyn Ang <selwynang@samples.mailgun.org>',
         to: email,
         subject: 'Hello ' + name,
-        text: 'This is a test email from Selwyn Ang for the Node JS course. Welcome to the task manager application!'
+        text: 'Welcome to the task manager application!'
     };
     // mg.messages().send(data, function (error, body) {
     //     console.log(body);
