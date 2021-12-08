@@ -1,0 +1,4 @@
+#To prevent the listed files or folders from getting uploaded to Heroku for the app deployment though they
+#will still get tracked by Git
+
+/test

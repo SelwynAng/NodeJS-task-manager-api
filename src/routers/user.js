@@ -38,7 +38,6 @@ router.post('/users', async (req, res) => { //Define the callback function as an
     //the catch block immediately runs instead
         const token = await user.generateAuthToken(); //Generating a login JWT for the user
         await user.save(); //Awaiting this asychronous function from Mongoose
-        console.log(user);
         email.sendWelcomeEmail(user.email, user.name);
         res.status(201).send({user: user.getPublicProfile(), token});
     } catch(e) {
@@ -281,7 +280,7 @@ router.patch('/users/me', auth, async (req, res) => {
 
 router.delete('/users/me', auth, async (req, res) => {
     try {
-        req.user.remove() //Using the Mongoose remove method on an instance to delete the document
+        await req.user.remove() //Using the Mongoose remove method on an instance to delete the document
         //A middleware has been set on remove() to automatically delete all tasks related to this user
         email.sendCancellationEmail(req.user.email, req.user.name);
         res.send(req.user.getPublicProfile());
